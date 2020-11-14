@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import {Dimensions, Linking, ActivityIndicator, StyleSheet, Text, View, TextInput, TouchableWithoutFeedback, Keyboard, Button, Image, Alert, TouchableOpacity, KeyboardAvoidingView, Picker, AsyncStorage} from 'react-native';
-
+import { StackActions } from '@react-navigation/native'
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 import axios from 'axios'
+import { NavigationActions } from 'react-navigation';
 
 
 class Signup extends Component {
@@ -18,7 +19,7 @@ class Signup extends Component {
             passwordConfirmation: "",
             indicating: false,
             photoVisible: false,
-            hasError: false
+            responseWorks: false
         };
         this.submit = this.submit.bind(this)
     }
@@ -38,13 +39,12 @@ class Signup extends Component {
           })
           .then(function (response) {
             console.log(response["data"]["user"]);
-            this.props.navigation.navigate("WorkoutEndsSolo")
+            this.setState({ responseWorks: true})
+            console.log(this.state.responseWorks)
           })
           .catch(function (errors) {
             errors["response"]["data"]["errors"].forEach(error => {
               console.log(error);
-              alert(error)
-              throw error
             });
           });
       }
@@ -68,10 +68,9 @@ class Signup extends Component {
       }
 
     render() {
-        if(this.state.hasError) {
-            return Alert.alert('jake')
-        }
+        
         return (
+        
             <View style = {{flex: 1, backgroundColor: '#9ff4c4'}}>
                 
                 <TouchableWithoutFeedback 
@@ -137,7 +136,12 @@ class Signup extends Component {
                             </TouchableOpacity>
                             <View style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
                                 <TouchableOpacity 
-                                onPress = {this.submit} 
+                                onPress = {() => {this.submit()
+                                    x = this.state.responseWorks
+                                    if(!x) {
+                                       this.props.navigation.navigate("WorkoutEndsSolo") 
+                                    }
+                                } }
                                 style={styles.authButton}
                                 >
                                     <Text style={styles.loginButtonText}>Start</Text>
