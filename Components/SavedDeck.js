@@ -6,59 +6,72 @@ const windowHeight = Dimensions.get('window').height;
 import axios from 'axios'
 import { FlatList } from 'react-native-gesture-handler';
 
-class WorkoutCard extends React.PureComponent {
+class DeckCard extends React.PureComponent {
     render() {
         return (
             <View style={styles.item}>
                 <Text>
                     {this.props.title}
                 </Text>
+                
             </View>
         )
     }
 }
 
-class Workout extends Component {
+class SavedDeck extends Component {
     data = [
         {
           "id":1,
-          "label":"Label 01"
+          "label":"Card 01"
         },
         {
           "id":2,
-          "label":"Label 02"
+          "label":"Card 02"
         },
         {
           "id":3,
-          "label":"Label 03"
+          "label":"Card 03"
         },
         {
           "id":4,
-          "label":"Label 04"
+          "label":"Card 04"
         },
         {
           "id":5,
-          "label":"Label 05"
+          "label":"Card 05"
         },
         {
           "id":6,
-          "label":"Label 06"
+          "label":"Card 06"
         },
         {
           "id":7,
-          "label":"Label 07"
+          "label":"Card 07"
         },
         {
           "id":8,
-          "label":"Label 08"
+          "label":"Card 08"
         },
         {
           "id":9,
-          "label":"Label 09"
-        }
+          "label":"Card 09"
+        },
+        {
+            "id":10,
+            "label":"Card 10"
+          },
+         
       ]
 
       _keyExtractor = (item, index) => item.id;
+
+    renderItem = ({item}) => (
+        <DeckCard
+        id={item.id}
+        title={item.label}
+        />
+    )
 
     constructor(props) {
         super(props)
@@ -80,6 +93,9 @@ class Workout extends Component {
                     renderItem={this.renderItem}
                     keyExtractor={this._keyExtractor}
                     numColumns={2} />
+                </View>
+                <View style = {styles.footer}>
+                    <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/20, color: '#fff', fontSize: 20}}>Footer</Text>
                 </View>
             </View>
         )
@@ -140,7 +156,13 @@ const styles = StyleSheet.create({
         flex: 1, 
         margin: 5, 
         height: 100
+    },
+    footer: {
+        backgroundColor: '#023436', 
+        width: windowWidth, 
+        height: windowHeight/8,
+        marginBottom: (7/8) * (windowHeight)
     }
 });
 
-export default Workout;
+export default SavedDeck;

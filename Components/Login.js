@@ -70,7 +70,7 @@ class Login extends Component {
                             placeholderTextColor="#A8A8A8" />
                             <View style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
                                 <TouchableOpacity 
-                                onPress = {() => this.props.navigation.navigate("s")}
+                                onPress = {() => this.props.navigation.navigate("Workout")}
                                 style={styles.authButton}
                                 >
                                     <Text style={styles.loginButtonText}>Start</Text>

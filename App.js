@@ -29,7 +29,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from './Components/Home';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
-import Workout from './Components/Workout';
+import Workout from './Components/SavedDeck';
+import SavedDeck from './Components/SavedDeck';
 
 const Stack = createStackNavigator();
 
@@ -41,7 +42,7 @@ class App extends Component {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup" component={Signup} />
-        <Stack.Screen name="Workout" component={Workout} />
+        <Stack.Screen name="SavedDeck" component={SavedDeck} />
       </Stack.Navigator>
     </NavigationContainer>
     )
