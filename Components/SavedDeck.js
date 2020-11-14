@@ -4,7 +4,8 @@ import {Dimensions, Linking, ActivityIndicator, StyleSheet, Text, View, TextInpu
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 import axios from 'axios'
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList, ScrollView } from 'react-native-gesture-handler';
+import Footer from './Footer';
 
 class DeckCard extends React.PureComponent {
     render() {
@@ -61,6 +62,18 @@ class SavedDeck extends Component {
             "id":10,
             "label":"Card 10"
           },
+          {
+            "id":823,
+            "label":"Card 08"
+          },
+          {
+            "id":34,
+            "label":"Card 09"
+          },
+          {
+              "id":11,
+              "label":"Card 10"
+            },
          
       ]
 
@@ -84,13 +97,12 @@ class SavedDeck extends Component {
     render() {
         return (
             <View style = {{flex: 1, backgroundColor: '#9ff4c4'}}>
-                <View style = {styles.welcome}>
-                    <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/20, color: '#fff', fontSize: 20}}>Let's Workout Username</Text>
-                </View>
-                <View>
+                <View style={{flex: 0.9}}>
                     <FlatList
                     data={this.data}
                     renderItem={this.renderItem}
+                    ListHeaderComponent={Footer}
+                    stickyHeaderIndices={[0]}
                     keyExtractor={this._keyExtractor}
                     numColumns={2} />
                 </View>
@@ -155,13 +167,17 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         flex: 1, 
         margin: 5, 
-        height: 100
+        height: 100,
+        borderBottomWidth: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     footer: {
         backgroundColor: '#023436', 
         width: windowWidth, 
         height: windowHeight/8,
-        marginBottom: (7/8) * (windowHeight)
+        //marginBottom: (7/8) * (windowHeight),
+       flex:0.1
     }
 });
 

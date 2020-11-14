@@ -6,7 +6,7 @@ const windowHeight = Dimensions.get('window').height;
 import axios from 'axios'
 import { FlatList } from 'react-native-gesture-handler';
 
-class Footer extends Footer {
+class Footer extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -17,7 +17,7 @@ class Footer extends Footer {
     render() {
         return (
             <View style = {styles.footer}>
-                <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/20, color: '#fff', fontSize: 20}}>Footer</Text>
+                <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/20, color: '#fff', fontSize: 20}}>Header</Text>
             </View>
         )
     }
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#023436', 
         width: windowWidth, 
         height: windowHeight/8,
-        marginBottom: (7/8) * (windowHeight)
+     //   marginBottom: (7/8) * (windowHeight)
     }
 });
 
