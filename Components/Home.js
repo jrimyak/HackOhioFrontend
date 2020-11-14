@@ -25,7 +25,7 @@ class Home extends Component {
                     <Text />
                     <View style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
                         <TouchableOpacity 
-                        onPress =  {() => this.props.navigation.navigate("Signup")}
+                        onPress =  {() => this.props.navigation.navigate("Login")}
                         style={styles.authButton}
                         >
                             <Text style={styles.loginButtonText}>Log-in</Text>

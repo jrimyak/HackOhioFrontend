@@ -3,17 +3,44 @@ import {Dimensions, Linking, ActivityIndicator, StyleSheet, Text, View, TextInpu
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
-
+import axios from 'axios'
 class Signup extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            firstName: "",
+            lastName: "",
+            username: "",
             email: "",
             password: "",
+            passwordConfirmation: "",
             indicating: false,
             photoVisible: false
         };
+        this.submit = this.submit.bind(this)
     }
+
+    submit() {
+        axios
+          .post("http://localhost:3000/api/v1/users", {
+            user: {
+              first_name: this.state.firstName,
+              last_name: this.state.lastName,
+              username: this.state.username,
+              email: this.state.email,
+              password: this.state.password,
+              password_confirmation: this.state.passwordConfirmation,
+            },
+          })
+          .then(function (response) {
+            console.log(response["data"]["user"]);
+          })
+          .catch(function (errors) {
+            errors["response"]["data"]["errors"].forEach(error => {
+              console.log(error);
+            });
+          });
+      }
 
     componentDidMount() {
         this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
@@ -45,25 +72,37 @@ class Signup extends Component {
                         behavior="padding"
                         style={{marginBottom: windowHeight/3}}
                         keyboardVerticalOffset={100}>
-                            <View
+                           {/*  <View
                             style={styles.logoContainer}>
                                 {
                                     this.state.photoVisible && <Image source="" alt="" style={styles.logo}></Image>
                                 }
-                            </View>
+                            </View> */}
                             <Text style={{textAlign: "center"}}>Create an Account</Text>
                             <ActivityIndicator
                             size="large"
                             color="#fff"
                             animating={this.state.indicating} />
                             <TextInput 
-                            placeholder="Enter your email"
+                            placeholder="Enter your first name"
                             style={styles.textfield}
-                            onChangeText={(text) => this.setState({email: text})}
+                            onChangeText={(text) => this.setState({firstName: text})}
+                            placeholderTextColor="#A8A8A8" />
+                            <Text />
+                            <TextInput 
+                            placeholder="Enter your last name"
+                            style={styles.textfield}
+                            onChangeText={(text) => this.setState({lastName: text})}
                             placeholderTextColor="#A8A8A8" />
                             <Text />
                             <TextInput 
                             placeholder="Enter your username"
+                            style={styles.textfield}
+                            onChangeText={(text) => this.setState({username: text})}
+                            placeholderTextColor="#A8A8A8" />
+                            <Text />
+                            <TextInput 
+                            placeholder="Enter your email"
                             style={styles.textfield}
                             onChangeText={(text) => this.setState({email: text})}
                             placeholderTextColor="#A8A8A8" />
@@ -79,7 +118,7 @@ class Signup extends Component {
                             secureTextEntry={true}
                             placeholder="Re-Enter your password"
                             style={styles.textfield}
-                            onChangeText={(text) => this.setState({password: text})}
+                            onChangeText={(text) => this.setState({passwordConfirmation: text})}
                             placeholderTextColor="#A8A8A8" />
                             <Text />
                             <TouchableOpacity>
@@ -87,7 +126,7 @@ class Signup extends Component {
                             </TouchableOpacity>
                             <View style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
                                 <TouchableOpacity 
-                                //onPress = {this.login} add func later
+                                onPress = {this.submit} 
                                 style={styles.authButton}
                                 >
                                     <Text style={styles.loginButtonText}>Start</Text>
