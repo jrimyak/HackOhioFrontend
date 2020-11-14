@@ -5,7 +5,7 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 import axios from 'axios'
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
-import Footer from './Footer';
+import Header from './Header';
 
 class DeckCard extends React.PureComponent {
     render() {
@@ -101,7 +101,7 @@ class SavedDeck extends Component {
                     <FlatList
                     data={this.data}
                     renderItem={this.renderItem}
-                    ListHeaderComponent={Footer}
+                    ListHeaderComponent={Header}
                     stickyHeaderIndices={[0]}
                     keyExtractor={this._keyExtractor}
                     numColumns={2} />

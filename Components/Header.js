@@ -6,7 +6,7 @@ const windowHeight = Dimensions.get('window').height;
 import axios from 'axios'
 import { FlatList } from 'react-native-gesture-handler';
 
-class Footer extends Component {
+class Header extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -86,4 +86,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Footer 
+export default Header 
