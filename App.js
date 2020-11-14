@@ -31,6 +31,7 @@ import Login from './Components/Login';
 import Signup from './Components/Signup';
 import SavedDeck from './Components/SavedDeck';
 import WorkoutBeginSolo from './Components/WorkoutBeginSolo';
+import WorkoutEndsSolo from './Components/WorkoutEndsSolo'; 
 
 const Stack = createStackNavigator();
 
@@ -44,6 +45,7 @@ class App extends Component {
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="SavedDeck" component={SavedDeck} />
         <Stack.Screen name="WorkoutBeginSolo" component={WorkoutBeginSolo} /> 
+        <Stack.Screen name="WorkoutEndsSolo" component={WorkoutEndsSolo} />
       </Stack.Navigator>
     </NavigationContainer>
     )

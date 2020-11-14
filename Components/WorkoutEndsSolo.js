@@ -6,9 +6,7 @@ const windowHeight = Dimensions.get('window').height;
 import axios from 'axios'
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 
-
-class WorkoutBeginSolo extends Component {
-
+class WorkoutEndsSolo extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -16,26 +14,31 @@ class WorkoutBeginSolo extends Component {
         }
     }
 
-    render() {
+    render() { 
         return (
             <View style={{flex: 1, backgroundColor: '#023436'}}>
-                <View style={{flex: 1, alignItems: "center"}}>
-                    <View style = {styles.logo}>
-                        <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/20, color: '#000', fontSize: 16}}>Logo</Text>
-                    </View>
-                </View>
-                <View style={{flex: 1}}>
-                    <Text style={{textAlign: "left", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>Card 1/?</Text>
-                    <View style={{flex: 1, alignItems: "center"}}>
-                        <View style = {styles.task}>
-                            <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/20, color: '#000', fontSize: 20}}>Card</Text>
-                        </View>
-                    </View>
+            <View style={{flex: 1, alignItems: "center"}}>
+                <View style = {styles.logo}>
+                    <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/20, color: '#000', fontSize: 16}}>Logo</Text>
                 </View>
             </View>
+            <View style={{flex: 1, alignItems: "center"}}>
+                <Text style={{textAlign: "center", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>FINISHED</Text>
+                <Text style={{textAlign: "center", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>YOU'VE COMPLETED THIS DECK IN</Text>
+                <Text style={{textAlign: "center", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>xx:xx</Text>
+                <Text style={{textAlign: "center", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>YOU'VE EARNED x POINTS</Text>
+                <TouchableOpacity 
+                                onPress = {() => this.props.navigation.navigate("WorkoutBeginSolo")}
+                                style={styles.authButton}
+                                >
+                                    <Text style={styles.loginButtonText}>Close</Text>
+                                </TouchableOpacity>
+            </View>
+        </View>
         )
     }
 }
+
 
 
 const styles = StyleSheet.create({
@@ -66,7 +69,8 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         color: "#A8A8A8",
         backgroundColor: "#1E1E1E",
-        width: 150
+        width: 150,
+        marginTop: windowHeight/8
     },
     textfield: {
         display: "flex",
@@ -115,4 +119,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default WorkoutBeginSolo
+export default WorkoutEndsSolo
