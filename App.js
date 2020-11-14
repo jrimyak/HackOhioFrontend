@@ -27,11 +27,11 @@ import {
 
 import {createSwitchNavigator, createAppContainer, SwitchNavigator, NavigationEvents} from "react-navigation";
 import { createStackNavigator } from 'react-navigation-stack';
-import Login from './Components/Login';
+import Signup from './Components/Signup';
 
 const AppNavigator = createStackNavigator({
   Home: {
-    screen: Login
+    screen: Signup
   }
 })
 
