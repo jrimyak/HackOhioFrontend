@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import {Dimensions, Linking, ActivityIndicator, StyleSheet, Text, View, TextInput, TouchableWithoutFeedback, Keyboard, Button, Image, Alert, TouchableOpacity, KeyboardAvoidingView, Picker, AsyncStorage} from 'react-native';
 
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
 class Login extends Component {
     constructor(props) {
         super(props)
@@ -8,7 +11,7 @@ class Login extends Component {
             email: "",
             password: "",
             indicating: false,
-            photoVisible: true
+            photoVisible: false
         };
     }
 
@@ -40,7 +43,7 @@ class Login extends Component {
                     <View style={styles.container}>
                         <KeyboardAvoidingView
                         behavior="padding"
-                        style={{marginBottom: 50}}
+                        style={{marginBottom: windowHeight/2}}
                         keyboardVerticalOffset={100}>
                             <View
                             style={styles.logoContainer}>
@@ -48,13 +51,14 @@ class Login extends Component {
                                     this.state.photoVisible && <Image source="" alt="" style={styles.logo}></Image>
                                 }
                             </View>
+                            <Text style={{textAlign: "center"}}>Sign In</Text>
                             <ActivityIndicator
                             size="large"
                             color="#fff"
                             animating={this.state.indicating} />
                             <TextInput 
                             placeholder="Enter your email"
-                            sytle={styles.textfield}
+                            style={styles.textfield}
                             onChangeText={(text) => this.setState({email: text})}
                             placeholderTextColor="#A8A8A8" />
                             <Text />
@@ -69,7 +73,7 @@ class Login extends Component {
                                 //onPress = {this.login} add func later
                                 style={styles.authButton}
                                 >
-                                    <Text style={styles.loginButtonText}>Go</Text>
+                                    <Text style={styles.loginButtonText}>Start</Text>
                                 </TouchableOpacity>
                             </View>
                         </KeyboardAvoidingView>
@@ -82,17 +86,19 @@ class Login extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: { 
+    container: {
+        display: 'flex',
+        flexDirection: 'column',
         flex: 1,
-        backgroundColor: "rgba(0, 0, 0, 0.1)",
-        alignItems: "center"
-    },
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
     logoContainer: {
         marginTop: 50,
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        zIndex: -1
+        //zIndex: -1
     },
     loginButtonText: {
         color: "#A8A8A8",
@@ -114,9 +120,9 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: "#5891E5",
         padding: 10, 
-        borderRadius: 0,
-        color: "#fff",
-        backgroundColor: "#000000",
+        borderRadius: 50,
+        color: "#000",
+        backgroundColor: "#fff",
         width: 350
     }
 });
