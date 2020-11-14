@@ -4,6 +4,8 @@ import {Dimensions, Linking, ActivityIndicator, StyleSheet, Text, View, TextInpu
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 import axios from 'axios'
+
+
 class Signup extends Component {
     constructor(props) {
         super(props)
@@ -15,10 +17,12 @@ class Signup extends Component {
             password: "",
             passwordConfirmation: "",
             indicating: false,
-            photoVisible: false
+            photoVisible: false,
+            hasError: false
         };
         this.submit = this.submit.bind(this)
     }
+
 
     submit() {
         axios
@@ -34,10 +38,13 @@ class Signup extends Component {
           })
           .then(function (response) {
             console.log(response["data"]["user"]);
+            this.props.navigation.navigate("WorkoutEndsSolo")
           })
           .catch(function (errors) {
             errors["response"]["data"]["errors"].forEach(error => {
               console.log(error);
+              alert(error)
+              throw error
             });
           });
       }
@@ -61,8 +68,12 @@ class Signup extends Component {
       }
 
     render() {
+        if(this.state.hasError) {
+            return Alert.alert('jake')
+        }
         return (
             <View style = {{flex: 1, backgroundColor: '#9ff4c4'}}>
+                
                 <TouchableWithoutFeedback 
                 onPress={Keyboard.dismiss} 
                 accessible={false}

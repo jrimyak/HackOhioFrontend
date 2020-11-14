@@ -28,11 +28,10 @@ class WorkoutEndsSolo extends Component {
                 <Text style={{textAlign: "center", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>xx:xx</Text>
                 <Text style={{textAlign: "center", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>YOU'VE EARNED x POINTS</Text>
                 <TouchableOpacity 
-                                onPress = {() => this.props.navigation.navigate("WorkoutBeginSolo")}
-                                style={styles.authButton}
-                                >
-                                    <Text style={styles.loginButtonText}>Close</Text>
-                                </TouchableOpacity>
+                onPress = {() => this.props.navigation.navigate("WorkoutBeginSolo")}
+                style={styles.authButton}>
+                    <Text style={styles.loginButtonText}>Close</Text>
+                </TouchableOpacity>
             </View>
         </View>
         )
