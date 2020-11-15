@@ -15,9 +15,9 @@ class Card extends Component {
     }
 
     render() {
-        return ( 
+        return (
             <View style={{flex: 1}}>
-                    <Text style={{textAlign: "left", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>Card 1/12</Text>
+                    <Text style={{textAlign: "left", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>Card {this.props.cardnum}/12</Text>
                     <View style={{flex: 1, alignItems: "center"}}>
                         <View style = {styles.task}>
                             <Text style={{textAlign: 'center', marginTop: windowHeight/20, color: '#000', fontSize: 24}}>{this.props.title}</Text>
@@ -66,32 +66,32 @@ const styles = StyleSheet.create({
         display: "flex",
         borderWidth: 1,
         borderColor: "#5891E5",
-        padding: 10, 
+        padding: 10,
         borderRadius: 50,
         color: "#000",
         backgroundColor: "#fff",
         width: 350
     },
     welcome: {
-      //  flex: 1, 
-        backgroundColor: '#023436', 
-        width: windowWidth, 
+      //  flex: 1,
+        backgroundColor: '#023436',
+        width: windowWidth,
         height: windowHeight/8
     },
     item: {
         backgroundColor: "#add8e6",
         alignItems: "center",
         justifyContent: "center",
-        flex: 1, 
-        margin: 10, 
+        flex: 1,
+        margin: 10,
         height: 100,
         borderBottomWidth: 1,
         alignItems: 'center',
         justifyContent: 'center'
     },
     logo: {
-        backgroundColor: '#fff', 
-        width: windowWidth -50, 
+        backgroundColor: '#fff',
+        width: windowWidth -50,
         height: windowHeight/8,
         //marginBottom: (7/8) * (windowHeight),
         marginTop: 100,
@@ -99,13 +99,13 @@ const styles = StyleSheet.create({
         justifyContent: "center"
     },
     task: {
-        backgroundColor: '#fff', 
-        width: windowWidth -50, 
+        backgroundColor: '#fff',
+        width: windowWidth -50,
         height: windowHeight/3,
         borderRadius: 50,
             alignItems: "center",
             //justifyContent: "center"
-        
+
     }
 });
 

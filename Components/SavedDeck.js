@@ -84,7 +84,7 @@ class SavedDeck extends Component {
       _keyExtractor = (item, index) => item.id;
 
     renderItem = (item) => (
-      <TouchableOpacity onPress =  {() => this.props.navigation.navigate("WorkoutBeginSolo")}>
+      <TouchableOpacity onPress =  {() => this.props.navigation.navigate("WorkoutBeginSolo", { is_saved: true, user_id: this.props.route.params.itemId, user_deck_id: item.user_deck_id, cards: this.state.decks })}>
         <DeckCard
         id={item.user_deck_id}
         title={item.name}
@@ -110,7 +110,7 @@ class SavedDeck extends Component {
           method: "get",
           url: `http://localhost:3000/api/v1/users/${self.props.route.params.itemId}/user_decks`,
        }).then(function(success){
-        console.log(success.data.data);
+        console.log(success.data);
         self.setState({ decks: success.data.data});
       }).catch(function(error) {
         console.log(error);
@@ -123,12 +123,10 @@ class SavedDeck extends Component {
       ////  console.log(JSON.stringify(route.params.id))
    //     this.setState({id: JSON.stringify(route.params.id)})
         // const itemId = this.props.route.params.itemId
-        const itemId = 12
-        console.log(itemId)
-        console.log(this.props)
+       // console.log(itemId)
+       console.log(this.props)
         return (
             <View style = {{flex: 1, backgroundColor: '#7db8ba'}}>
-               <Text>{itemId}</Text>
                 <View style={{flex: 0.9}}>
                     <FlatList
                     data={this.state.decks}

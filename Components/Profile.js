@@ -6,6 +6,7 @@ const windowHeight = Dimensions.get('window').height;
 import axios from 'axios'
 import { NavigationActions } from 'react-navigation';
 import Header from './Header'
+import Jake from '../Assets/jakeCartoon.jpg'
 
 class Profile extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class Profile extends Component {
             username: 'jrimyak',
             score: 0,
             easyDecks: 0,
-            medDecks: 0,
+            medDecks: 1,
             hardDecks: 0,
             favoriteDeck: 'Deck 1'
         }
@@ -31,8 +32,8 @@ class Profile extends Component {
                 </View>
                 <View style={{alignItems: 'center'}}>
                 <Image
-                    source={{ uri: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg'}}   
-                    style={{width: 125, height:125, borderRadius: 100, margin: -69, borderWidth: 2,
+                    source={Jake}
+                    style={{width: 130, height:130, borderRadius: 100, margin: -69, borderWidth: 1.5,
                         borderColor: "#9ff4c4"}} >
                 </Image>
                 <View style={{width: 50, height: 50, borderRadius: 50, borderWidth: 1, backgroundColor: '#9ff4c4',
@@ -94,29 +95,29 @@ const styles = StyleSheet.create({
         display: "flex",
         borderWidth: 1,
         borderColor: "#5891E5",
-        padding: 10, 
+        padding: 10,
         borderRadius: 50,
         color: "#000",
         backgroundColor: "#fff",
         width: 350
     },
     welcome: {
-      //  flex: 1, 
-        backgroundColor: '#023436', 
-        width: windowWidth, 
+      //  flex: 1,
+        backgroundColor: '#023436',
+        width: windowWidth,
         height: windowHeight/8
     },
     item: {
         backgroundColor: "#add8e6",
         alignItems: "center",
         justifyContent: "center",
-        flex: 1, 
-        margin: 5, 
+        flex: 1,
+        margin: 5,
         height: 100
     },
     footer: {
-        backgroundColor: '#023436', 
-        width: windowWidth, 
+        backgroundColor: '#023436',
+        width: windowWidth,
         height: windowHeight/8,
      //   marginBottom: (7/8) * (windowHeight)
     }
@@ -129,6 +130,6 @@ export default Profile
 //first name last name
 //email
 //score
-// current loc 
+// current loc
 // decks completed (easy, medium, hard)
 // favorite deck?
