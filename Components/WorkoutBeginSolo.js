@@ -14,9 +14,44 @@ class WorkoutBeginSolo extends Component {
         this.state = {
             title: 'title',
             description: 'lorem ipsum i dont know what to put here but yolo dude',
-            repOrInt: '2 mins'
+            repOrInt: '2 mins',
+            cardnum: 1
         }
     }
+
+    // post request to http://localhost:3000/api/v1/users/:user_id/user_decks
+    // componentDidMount() {
+    //     axios.post(`http://localhost:3000/api/v1/users/1/user_decks`, {
+    //         headers : {"Content-Type": "application/json"},
+    //         user_deck: {
+    //             difficulty: 'hard'
+    //         }
+    //     })
+    //     .then(function(response) {
+    //         this.setState({cards: response.data.cards, user_set_id: response.data.user_set_id})
+    //     }).then(function(errors) {
+    //         console.log(errors);
+    //     });
+        
+    // }
+    
+    getButtonTitle = () => {
+        if(this.state.cardnum < 12){
+             return "Next Card";
+        }
+        else{
+            return "End Workout";
+        }
+     }
+ 
+     getOnPress = () => {
+         if(this.state.cardnum < 12){
+             this.setState({cardnum: this.state.cardnum+1});
+         }
+         else{
+             this.props.navigation.navigate("WorkoutEndsSolo");
+         }
+      }   
 
     render() {
         return (
@@ -26,7 +61,13 @@ class WorkoutBeginSolo extends Component {
                         <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/20, color: '#000', fontSize: 16}}>Logo</Text>
                     </View>
                 </View>
-                <Card title={this.state.title} description={this.state.description} repOrInt={this.state.repOrInt} />
+                <Card title={this.state.title} description={this.state.description} repOrInt={this.state.repOrInt}cardnum = {this.state.cardnum} />
+                <TouchableOpacity 
+                        onPress =  {() => {this.getOnPress()}}
+                        style={styles.authButton}
+                        >
+                            <Text style={styles.loginButtonText}>{this.getButtonTitle()}</Text>
+                        </TouchableOpacity>
             </View>
         )
     }
@@ -61,7 +102,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         color: "#A8A8A8",
         backgroundColor: "#1E1E1E",
-        width: 150
+        width: windowWidth
     },
     textfield: {
         display: "flex",
