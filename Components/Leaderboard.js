@@ -16,12 +16,12 @@ class LeaderboardPosition extends React.PureComponent {
                     source={{ uri: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg'}}   
                     style={{width: 50, height: 50, borderRadius: 50/ 2}} >
                 </Image>
-                <Text style = {{marginTop: 15, marginLeft: 20}}>
+                <Text style = {{marginTop: 15, marginLeft: 20, fontSize: 18}}>
                     {this.props.name}
                 </Text>
                 </View>
                 <View style={{alignItems: "flex-end"}}>
-                <Text style = {{textAlign: "left", marginRight: 10}}>
+                <Text style = {{textAlign: "left", marginRight: 10, fontSize: 18}}>
                     {this.props.score}
                 </Text>
                 </View>
@@ -121,18 +121,18 @@ class Leaderboard extends Component {
 
     render() {
         return (
-            <View style = {{flex: 1, backgroundColor: '#9ff4c4'}}>
+            <View style = {{flex: 1, backgroundColor: '#7db8ba'}}>
                 <View style={{flex: 0.9}}>
                     <FlatList
-                    data={this.data}
+                    data={this.data.sort((a, b) => a.score < b.score)}
                     renderItem={this.renderItem}
-                    ListHeaderComponent={Header}
+                    ListHeaderComponent={() => <Header name='Leaderboard' />}
                     stickyHeaderIndices={[0]}
                     keyExtractor={this._keyExtractor}
                     numColumns={1} />
                 </View>
                 <View style = {styles.footer}>
-                    <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/20, color: '#fff', fontSize: 20}}>Footer</Text>
+                    <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/28, color: '#fff', fontSize: 20}}>Footer</Text>
                 </View>
             </View>
         )
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
         height: windowHeight/8
     },
     item: {
-        backgroundColor: "#add8e6",
+        backgroundColor: "#fff",
         alignItems: "center",
         //justifyContent: "flex-start",
         flex: 1, 
