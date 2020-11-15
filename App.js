@@ -44,7 +44,7 @@ class App extends Component {
   render() {
     return (
       <NavigationContainer>
-      <Stack.Navigator initialRouteName="ChooseWorkout">
+      <Stack.Navigator initialRouteName="WorkoutBeginSolo">
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup" component={Signup} />

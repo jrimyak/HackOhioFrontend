@@ -24,6 +24,7 @@ class Signup extends Component {
         this.submit = this.submit.bind(this)
     }
 
+// post request to http://localhost:3000/api/v1/users/:user_id/user_decks
 
     submit() {
         axios

@@ -12,9 +12,48 @@ class WorkoutBeginSolo extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
+            user_set_id: null,
+            cards: [],
+            cardnum: 1
         }
     }
+    // post request to http://localhost:3000/api/v1/users/:user_id/user_decks
+    // componentDidMount() {
+    //     axios.post(`http://localhost:3000/api/v1/users/1/user_decks`, {
+    //         headers : {"Content-Type": "application/json"},
+    //         user_deck: {
+    //             difficulty: 'hard'
+    //         }
+    //     })
+    //     .then(function(response) {
+    //         this.setState({cards: response.data.cards, user_set_id: response.data.user_set_id})
+    //     }).then(function(errors) {
+    //         console.log(errors);
+    //     });
+        
+    // }
+    
+    getButtonTitle = () => {
+       if(this.state.cardnum < 12){
+            return "Next Card";
+       }
+       else{
+           return "End Workout";
+       }
+    }
+
+    /*renderCards = () => {
+        this.state.cards.
+    }*/
+
+    getOnPress = () => {
+        if(this.state.cardnum < 12){
+            this.setState({cardnum: this.state.cardnum+1});
+        }
+        else{
+            this.props.navigation.navigate("WorkoutEndsSolo");
+        }
+     }    
 
     render() {
         return (
@@ -25,12 +64,16 @@ class WorkoutBeginSolo extends Component {
                     </View>
                 </View>
                 <View style={{flex: 1}}>
-                    <Text style={{textAlign: "left", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>Card 1/12</Text>
+                    <Text style={{textAlign: "left", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>Card {this.state.cardnum}/12</Text>
                     <View style={{flex: 1, alignItems: "center"}}>
-                        <View style = {styles.task}>
-                            <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/20, color: '#000', fontSize: 20}}>Card</Text>
-                        </View>
+                        { <View style = {styles.task}>
+                            <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/20, color: '#000', fontSize: 20}}>{this.state.cardnum}Pushups</Text>
+                        </View> }
                     </View>
+                    <Button
+                        title={this.getButtonTitle()}
+                        onPress={() => {this.getOnPress}}
+                    />
                 </View>
             </View>
         )
