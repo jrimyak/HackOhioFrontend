@@ -58,32 +58,32 @@ const styles = StyleSheet.create({
         display: "flex",
         borderWidth: 1,
         borderColor: "#5891E5",
-        padding: 10, 
+        padding: 10,
         borderRadius: 50,
         color: "#000",
         backgroundColor: "#fff",
         width: 350
     },
     welcome: {
-      //  flex: 1, 
-        backgroundColor: '#023436', 
-        width: windowWidth, 
+      //  flex: 1,
+        backgroundColor: '#023436',
+        width: windowWidth,
         height: windowHeight/8
     },
     item: {
         backgroundColor: "#add8e6",
         alignItems: "center",
         justifyContent: "center",
-        flex: 1, 
-        margin: 5, 
+        flex: 1,
+        margin: 5,
         height: 100
     },
     footer: {
-        backgroundColor: '#023436', 
-        width: windowWidth, 
+        backgroundColor: '#023436',
+        width: windowWidth,
         height: windowHeight/8,
      //   marginBottom: (7/8) * (windowHeight)
     }
 });
 
-export default Header 
+export default Header

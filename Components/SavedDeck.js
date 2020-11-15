@@ -6,21 +6,25 @@ const windowHeight = Dimensions.get('window').height;
 import axios from 'axios'
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import Header from './Header';
+import { useNavigation } from '@react-navigation/native';
 
 class DeckCard extends React.PureComponent {
     render() {
         return (
+
             <View style={styles.item}>
                 <Text>
                     {this.props.title}
                 </Text>
-                
+
             </View>
         )
     }
 }
 
+
 class SavedDeck extends Component {
+
     data = [
         {
           "id":1,
@@ -74,33 +78,60 @@ class SavedDeck extends Component {
               "id":11,
               "label":"Card 10"
             },
-         
+
       ]
 
       _keyExtractor = (item, index) => item.id;
 
-    renderItem = ({item}) => (
+    renderItem = (item) => (
+      <TouchableOpacity onPress =  {() => this.props.navigation.navigate("WorkoutBeginSolo")}>
         <DeckCard
-        id={item.id}
-        title={item.label}
+        id={item.user_deck_id}
+        title={item.name}
         />
+        </TouchableOpacity>
     )
+
 
     constructor(props) {
         super(props)
+
         this.state = {
             newDeck: false,
-            username: "Kriti"
+            username: "Kriti",
+            id: '',
+            decks: [],
         }
     }
-
+//${this.props.route.params.itemId}
+     componentDidMount() {
+       var self = this;
+       axios({
+          method: "get",
+          url: `http://localhost:3000/api/v1/users/${self.props.route.params.itemId}/user_decks`,
+       }).then(function(success){
+        console.log(success.data.data);
+        self.setState({ decks: success.data.data});
+      }).catch(function(error) {
+        console.log(error);
+      })
+    }
 
     render() {
+        //var idVal = this.props.navigation.params.id;
+      //  const { route } = this.props
+      ////  console.log(JSON.stringify(route.params.id))
+   //     this.setState({id: JSON.stringify(route.params.id)})
+        // const itemId = this.props.route.params.itemId
+        const itemId = 12
+        console.log(itemId)
+        console.log(this.props)
         return (
             <View style = {{flex: 1, backgroundColor: '#7db8ba'}}>
+               <Text>{itemId}</Text>
                 <View style={{flex: 0.9}}>
                     <FlatList
-                    data={this.data}
+                    data={this.state.decks}
                     renderItem={this.renderItem}
                     ListHeaderComponent={() => <Header name="Let's Workout," username={this.state.username} punc="!" />}
                     stickyHeaderIndices={[0]}
@@ -109,6 +140,9 @@ class SavedDeck extends Component {
                 </View>
                 <View style = {styles.footer}>
                     <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/28, color: '#fff', fontSize: 20}}>Footer</Text>
+                </View>
+                <View>
+
                 </View>
             </View>
         )
@@ -150,32 +184,32 @@ const styles = StyleSheet.create({
         display: "flex",
         borderWidth: 1,
         borderColor: "#5891E5",
-        padding: 10, 
+        padding: 10,
         borderRadius: 50,
         color: "#000",
         backgroundColor: "#fff",
         width: 350
     },
     welcome: {
-      //  flex: 1, 
-        backgroundColor: '#023436', 
-        width: windowWidth, 
+      //  flex: 1,
+        backgroundColor: '#023436',
+        width: windowWidth,
         height: windowHeight/8
     },
     item: {
         backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "center",
-        flex: 1, 
-        margin: 5, 
+        flex: 1,
+        margin: 5,
         height: 150,
         borderBottomWidth: 1,
         alignItems: 'center',
         justifyContent: 'center'
     },
     footer: {
-        backgroundColor: '#023436', 
-        width: windowWidth, 
+        backgroundColor: '#023436',
+        width: windowWidth,
         height: windowHeight/8,
         //marginBottom: (7/8) * (windowHeight),
        flex:0.1

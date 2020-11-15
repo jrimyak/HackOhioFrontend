@@ -37,19 +37,21 @@ import Leaderboard from './Components/Leaderboard';
 import Profile from './Components/Profile';
 import NewDeck from './Components/NewDeck'
 import ChooseWorkout from './Components/ChooseWorkout'
+import axios from 'axios';
 
 const Stack = createStackNavigator();
+axios.defaults.headers.post["Content-Type"] = "application/json";
 
 class App extends Component {
   render() {
     return (
       <NavigationContainer>
-      <Stack.Navigator initialRouteName="Profile">
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="SavedDeck" component={SavedDeck} />
-        <Stack.Screen name="WorkoutBeginSolo" component={WorkoutBeginSolo} /> 
+        <Stack.Screen name="WorkoutBeginSolo" component={WorkoutBeginSolo} />
         <Stack.Screen name="WorkoutEndsSolo" component={WorkoutEndsSolo} />
         <Stack.Screen name="Leaderboard" component={Leaderboard} />
         <Stack.Screen name="Profile" component={Profile} />

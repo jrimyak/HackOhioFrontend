@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
 import {Dimensions, Linking, ActivityIndicator, StyleSheet, Text, View, TextInput, TouchableWithoutFeedback, Keyboard, Button, Image, Alert, TouchableOpacity, KeyboardAvoidingView, Picker, AsyncStorage} from 'react-native';
-import { StackActions } from '@react-navigation/native'
+import { StackActions, useNavigation } from '@react-navigation/native'
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 import axios from 'axios'
 import { NavigationActions } from 'react-navigation';
 
-
+userId = 0
 class Signup extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            itemId: 1,
             firstName: "",
             lastName: "",
             username: "",
@@ -39,8 +40,9 @@ class Signup extends Component {
           })
           .then(function (response) {
             console.log(response["data"]["user"]);
-            this.setState({ responseWorks: true})
-            console.log(this.state.responseWorks)
+            const user = response.data
+            //this.setState({ itemId: user.id })
+           // console.log(this.state.responseWorks)
           })
           .catch(function (errors) {
             errors["response"]["data"]["errors"].forEach(error => {
@@ -53,28 +55,28 @@ class Signup extends Component {
         this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
         this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
       }
-    
+
       componentWillUnmount() {
         this.keyboardDidShowListener.remove();
         this.keyboardDidHideListener.remove();
       }
-    
+
       _keyboardDidShow = () => {
         this.setState({photoVisible: false})
       }
-    
+
       _keyboardDidHide = () => {
         this.setState({photoVisible: true})
       }
 
     render() {
-        
+
         return (
-        
+
             <View style = {{flex: 1, backgroundColor: '#9ff4c4'}}>
-                
-                <TouchableWithoutFeedback 
-                onPress={Keyboard.dismiss} 
+
+                <TouchableWithoutFeedback
+                onPress={Keyboard.dismiss}
                 accessible={false}
                 style = {{flexDirection:"row"}}>
                     <View style={styles.container}>
@@ -93,25 +95,25 @@ class Signup extends Component {
                             size="large"
                             color="#fff"
                             animating={this.state.indicating} />
-                            <TextInput 
+                            <TextInput
                             placeholder="Enter your first name"
                             style={styles.textfield}
                             onChangeText={(text) => this.setState({firstName: text})}
                             placeholderTextColor="#A8A8A8" />
                             <Text />
-                            <TextInput 
+                            <TextInput
                             placeholder="Enter your last name"
                             style={styles.textfield}
                             onChangeText={(text) => this.setState({lastName: text})}
                             placeholderTextColor="#A8A8A8" />
                             <Text />
-                            <TextInput 
+                            <TextInput
                             placeholder="Enter your username"
                             style={styles.textfield}
                             onChangeText={(text) => this.setState({username: text})}
                             placeholderTextColor="#A8A8A8" />
                             <Text />
-                            <TextInput 
+                            <TextInput
                             placeholder="Enter your email"
                             style={styles.textfield}
                             onChangeText={(text) => this.setState({email: text})}
@@ -132,11 +134,12 @@ class Signup extends Component {
                             placeholderTextColor="#A8A8A8" />
                             <Text />
                             <View style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
-                                <TouchableOpacity 
+                                <TouchableOpacity
                                 onPress = {() => {this.submit()
                                     x = this.state.responseWorks
                                     if(!x) {
-                                       this.props.navigation.navigate("WorkoutEndsSolo") 
+
+                                       this.props.navigation.navigate("SavedDeck", { itemId: this.state.itemId})
                                     }
                                 } }
                                 style={styles.authButton}
@@ -187,7 +190,7 @@ const styles = StyleSheet.create({
         display: "flex",
         borderWidth: 1,
         borderColor: "#5891E5",
-        padding: 10, 
+        padding: 10,
         borderRadius: 50,
         color: "#000",
         backgroundColor: "#fff",
