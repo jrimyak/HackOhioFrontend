@@ -25,7 +25,7 @@ class WorkoutBeginSolo extends Component {
                     </View>
                 </View>
                 <View style={{flex: 1}}>
-                    <Text style={{textAlign: "left", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>Card 1/?</Text>
+                    <Text style={{textAlign: "left", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>Card 1/12</Text>
                     <View style={{flex: 1, alignItems: "center"}}>
                         <View style = {styles.task}>
                             <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/20, color: '#000', fontSize: 20}}>Card</Text>
