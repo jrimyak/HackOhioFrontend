@@ -34,6 +34,7 @@ import SavedDeck from './Components/SavedDeck';
 import WorkoutBeginSolo from './Components/WorkoutBeginSolo';
 import WorkoutEndsSolo from './Components/WorkoutEndsSolo';
 import Leaderboard from './Components/Leaderboard';
+import Profile from './Components/Profile';
 
 const Stack = createStackNavigator();
 
@@ -41,7 +42,7 @@ class App extends Component {
   render() {
     return (
       <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Profile">
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup" component={Signup} />
@@ -49,6 +50,7 @@ class App extends Component {
         <Stack.Screen name="WorkoutBeginSolo" component={WorkoutBeginSolo} /> 
         <Stack.Screen name="WorkoutEndsSolo" component={WorkoutEndsSolo} />
         <Stack.Screen name="Leaderboard" component={Leaderboard} />
+        <Stack.Screen name="Profile" component={Profile} />
       </Stack.Navigator>
     </NavigationContainer>
     )
