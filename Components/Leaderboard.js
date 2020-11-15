@@ -13,7 +13,7 @@ class LeaderboardPosition extends React.PureComponent {
             <View style={styles.item}>
                 <View style={{flex: 1,flexDirection:"row", marginLeft: 10}}>
                 <Image style = {{alignItems: "flex-start"}}
-                    source={{ uri: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg'}}   
+                    source={{ uri: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg'}}
                     style={{width: 50, height: 50, borderRadius: 50/ 2}} >
                 </Image>
                 <Text style = {{marginTop: 15, marginLeft: 20, fontSize: 18}}>
@@ -25,7 +25,7 @@ class LeaderboardPosition extends React.PureComponent {
                     {this.props.score}
                 </Text>
                 </View>
-                
+
             </View>
         )
     }
@@ -98,7 +98,7 @@ class Leaderboard extends Component {
             "name":"Nickalaus P",
             "score":15
             },
-         
+
       ]
 
       _keyExtractor = (item, index) => item.rank;
@@ -114,7 +114,7 @@ class Leaderboard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            
+
         }
     }
 
@@ -132,7 +132,18 @@ class Leaderboard extends Component {
                     numColumns={1} />
                 </View>
                 <View style = {styles.footer}>
-                    <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/28, color: '#fff', fontSize: 20}}>Footer</Text>
+                <View style={{flexDirection: "row", justifyContent: "space-evenly"}}>
+                    <TouchableOpacity
+                onPress = {() => this.props.navigation.navigate("NewDeck")}
+                style={styles.authButton}>
+                    <Text style={styles.loginButtonText}>NEW WORKOUT</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                onPress = {() => this.props.navigation.navigate("Profile")}
+                style={styles.authButton}>
+                    <Text style={styles.loginButtonText}>PROFILE</Text>
+                </TouchableOpacity>
+                    </View>
                 </View>
             </View>
         )
@@ -174,31 +185,31 @@ const styles = StyleSheet.create({
         display: "flex",
         borderWidth: 1,
         borderColor: "#5891E5",
-        padding: 10, 
+        padding: 10,
         borderRadius: 50,
         color: "#000",
         backgroundColor: "#fff",
         width: 350
     },
     welcome: {
-      //  flex: 1, 
-        backgroundColor: '#023436', 
-        width: windowWidth, 
+      //  flex: 1,
+        backgroundColor: '#023436',
+        width: windowWidth,
         height: windowHeight/8
     },
     item: {
         backgroundColor: "#fff",
         alignItems: "center",
         //justifyContent: "flex-start",
-        flex: 1, 
-        margin: 5, 
+        flex: 1,
+        margin: 5,
         height: 100,
         borderBottomWidth: 1,
         flexDirection: "row"
     },
     footer: {
-        backgroundColor: '#023436', 
-        width: windowWidth, 
+        backgroundColor: '#023436',
+        width: windowWidth,
         height: windowHeight/8,
         //marginBottom: (7/8) * (windowHeight),
        flex:0.1

@@ -14,7 +14,7 @@ class WorkoutEndsSolo extends Component {
         }
     }
 
-    render() { 
+    render() {
         return (
             <View style={{flex: 1, backgroundColor: '#023436'}}>
             <View style={{flex: 1, alignItems: "center"}}>
@@ -25,9 +25,9 @@ class WorkoutEndsSolo extends Component {
             <View style={{flex: 1, alignItems: "center", marginTop: -100}}>
                 <Text style={{textAlign: "center", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>FINISHED</Text>
                 <Text style={{textAlign: "center", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>YOU'VE COMPLETED THIS DECK IN</Text>
-                <Text style={{textAlign: "center", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>xx:xx</Text>
+                <Text style={{textAlign: "center", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>{this.props.route.params.count} s:{this.props.route.params.milli} ms</Text>
                 <Text style={{textAlign: "center", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>YOU'VE EARNED x POINTS</Text>
-                <TouchableOpacity 
+                <TouchableOpacity
                 onPress = {() => this.props.navigation.navigate("WorkoutBeginSolo")}
                 style={styles.authButton}>
                     <Text style={styles.loginButtonText}>CLOSE</Text>
@@ -75,32 +75,32 @@ const styles = StyleSheet.create({
         display: "flex",
         borderWidth: 1,
         borderColor: "#5891E5",
-        padding: 10, 
+        padding: 10,
         borderRadius: 50,
         color: "#000",
         backgroundColor: "#fff",
         width: 350
     },
     welcome: {
-      //  flex: 1, 
-        backgroundColor: '#023436', 
-        width: windowWidth, 
+      //  flex: 1,
+        backgroundColor: '#023436',
+        width: windowWidth,
         height: windowHeight/8
     },
     item: {
         backgroundColor: "#add8e6",
         alignItems: "center",
         justifyContent: "center",
-        flex: 1, 
-        margin: 10, 
+        flex: 1,
+        margin: 10,
         height: 100,
         borderBottomWidth: 1,
         alignItems: 'center',
         justifyContent: 'center'
     },
     logo: {
-        backgroundColor: '#fff', 
-        width: windowWidth -50, 
+        backgroundColor: '#fff',
+        width: windowWidth -50,
         height: windowHeight/8,
         //marginBottom: (7/8) * (windowHeight),
         marginTop: 100,
@@ -108,12 +108,12 @@ const styles = StyleSheet.create({
         justifyContent: "center"
     },
     task: {
-        backgroundColor: '#fff', 
-        width: windowWidth -50, 
+        backgroundColor: '#fff',
+        width: windowWidth -50,
         height: windowHeight/3,
         alignItems: "center",
         justifyContent: "center"
-        
+
     }
 });
 

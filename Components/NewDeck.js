@@ -6,13 +6,17 @@ const windowHeight = Dimensions.get('window').height;
 import axios from 'axios'
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import Header from './Header';
+import CheckBox from '@react-native-community/checkbox';
 
 class NewDeck extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: 'Kriti',
-            diff: ''
+            username: 'Jake',
+            dur: '',
+            group: '',
+            diff: '',
+            toggleCheckBox: false
         }
     }
 
@@ -25,19 +29,38 @@ class NewDeck extends Component {
                         <Text style={{textAlign: 'center', fontSize: 20}}>Generate New Deck</Text>
                         <Text style={{textAlign: 'center', fontSize: 14}}>Answer the following questions to generate a new deck</Text>
                         <View style={{marginTop: (.6*windowHeight)/4, flexDirection: "column", alignItems: "center"}}>
-                            <Text style={{textAlign: "center", fontSize: 14}}>Select a difficulty</Text>
-                            <Text></Text>
-                            <Text></Text>
-                            <Text></Text>
+                            <Text style={{textAlign: "center", fontSize: 18,color: '#000', marginTop: -100}}>Duration</Text>
+
                             <Picker
-                            selectedValue={this.state.diff}
-                            style={{marginTop: -70, height:75, width:125}}
+                            selectedValue={this.state.dur}
+                            style={{marginTop: -75, height:75, width:125}}
                             onValueChange={(itemValue, itemIndex) =>
                             this.setState({diff: itemValue})}>
-                                <Picker.Item label="Easy" value={1}></Picker.Item>
-                                <Picker.Item label="Medium" value={2}></Picker.Item>
-                                <Picker.Item label="Hard" value={3}></Picker.Item>
+                                <Picker.Item label="Long" value={1}></Picker.Item>
+                                <Picker.Item label="Short" value={2}></Picker.Item>
                             </Picker>
+                            <Text style={{textAlign: "center", fontSize: 18, color: '#000', marginTop: 100}}>Aerobic or Anaerobic</Text>
+
+                            <Picker
+                            selectedValue={this.state.diff}
+                            style={{marginTop: -60, height:75, width:125}}
+                            onValueChange={(itemValue, itemIndex) =>
+                            this.setState({diff: itemValue})}>
+                                <Picker.Item label="Aerobic" value={1}></Picker.Item>
+                                <Picker.Item label="Anaerobic" value={2}></Picker.Item>
+                            </Picker>
+                            <Text style={{textAlign: "center", fontSize: 18, color: '#000', marginTop: 100}}>Core Group</Text>
+
+                            <Picker
+                            selectedValue={this.state.group}
+                            style={{marginTop: -60, height:75, width:125}}
+                            onValueChange={(itemValue, itemIndex) =>
+                            this.setState({diff: itemValue})}>
+                                <Picker.Item label="Pectoral" value={1}></Picker.Item>
+                                <Picker.Item label="Abs" value={2}></Picker.Item>
+                                <Picker.Item label="Legs" value={3}></Picker.Item>
+                            </Picker>
+
                             <TouchableOpacity style={styles.authButton} onPress={() => this.props.navigation.navigate("WorkoutBeginSolo")}>
                                 <Text style={styles.loginButtonText}>START</Text>
                             </TouchableOpacity>
@@ -46,8 +69,19 @@ class NewDeck extends Component {
                 </View>
                 <View style={{backgroundColor: '#023436', width: windowWidth, height: windowHeight/8,
                     flex:0.1}}>
-                    <Text style={{textAlign: 'left', color: "#fff"}}>Nav bar</Text>
-                </View>
+<View style={{flexDirection: "row", justifyContent: "space-evenly"}}>
+                    <TouchableOpacity
+                onPress = {() => this.props.navigation.navigate("NewDeck")}
+                style={styles.authButton}>
+                    <Text style={styles.loginButtonText}>NEW WORKOUT</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                onPress = {() => this.props.navigation.navigate("Leaderboard")}
+                style={styles.authButton}>
+                    <Text style={styles.loginButtonText}>LEADERBOARD</Text>
+                </TouchableOpacity>
+                    </View>
+                    </View>
             </View>
         )
     }
@@ -88,7 +122,7 @@ const styles = StyleSheet.create({
         display: "flex",
         borderWidth: 1,
         borderColor: "#5891E5",
-        padding: 10, 
+        padding: 10,
         borderRadius: 50,
         color: "#000",
         backgroundColor: "#fff",

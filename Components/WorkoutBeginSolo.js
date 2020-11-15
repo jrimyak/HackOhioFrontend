@@ -7,6 +7,42 @@ import axios from 'axios'
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import Card from './Card'
 
+class StopWatch extends React.PureComponent {
+
+    state = {
+        timer: null,
+        counter: '00',
+        miliseconds: '00',
+        startDisabled: true,
+        stopDisabled: false
+    }
+
+
+    constructor( props ) {
+        super( props );
+
+        this.onButtonStart = this.onButtonStart.bind(this);
+        this.onButtonStop = this.onButtonStop.bind(this);
+        this.onButtonClear = this.onButtonClear.bind(this);
+        this.start = this.start.bind(this);
+    }
+
+
+
+
+
+
+
+    render() {
+        return(
+<View>
+
+</View>
+
+        );
+    }
+}
+
 class WorkoutBeginSolo extends Component {
 
     constructor(props) {
@@ -15,8 +51,17 @@ class WorkoutBeginSolo extends Component {
             title: 'title',
             description: 'lorem ipsum i dont know what to put here but yolo dude',
             repOrInt: '2 mins',
-            cardnum: 1
+            cardnum: 1,
+            timer: null,
+            counter: '00',
+            miliseconds: '00',
+            startDisabled: true,
+            stopDisabled: false
         }
+        this.onButtonStart = this.onButtonStart.bind(this);
+        this.onButtonStop = this.onButtonStop.bind(this);
+        this.onButtonClear = this.onButtonClear.bind(this);
+        this.start = this.start.bind(this);
     }
 
     // post request to http://localhost:3000/api/v1/users/:user_id/user_decks
@@ -41,13 +86,70 @@ class WorkoutBeginSolo extends Component {
              this.setState({title: 'Easy Deck'})
              this.setState({description: this.props.route.params.cards[0].cards[this.state.cardnum-1]["workout"]})
              this.setState({repOrInt: this.props.route.params.cards[0].cards[this.state.cardnum-1]["duration"]})
-         }
+
+       }
          else{
-             this.props.navigation.navigate("WorkoutEndsSolo");
+            this.onButtonStop()
+             this.props.navigation.navigate("WorkoutEndsSolo", {count: this.state.counter, milli: this.state.miliseconds});
+
          }
       }
 
 
+      componentDidMount() {
+        this.start();
+    }
+
+
+    componentWillUnmount() {
+        clearInterval(this.state.timer);
+    }
+
+
+
+    start() {
+        var self = this;
+        let timer = setInterval(() => {
+            var num = (Number(this.state.miliseconds) + 1).toString(),
+                count = this.state.counter;
+
+            if( Number(this.state.miliseconds) == 99 ) {
+                count = (Number(this.state.counter) + 1).toString();
+                num = '00';
+            }
+
+            self.setState({
+                counter: count.length == 1 ? '0'+count : count,
+                miliseconds: num.length == 1 ? '0'+num : num
+            });
+        }, 0);
+        this.setState({timer});
+    }
+
+
+
+
+
+    onButtonStart() {
+
+        this.start();
+        this.setState({startDisabled: true, stopDisabled: false});
+    }
+
+
+    onButtonStop() {
+        clearInterval(this.state.timer);
+        this.setState({startDisabled: false, stopDisabled: true});
+    }
+
+
+    onButtonClear() {
+        this.setState({
+            timer: null,
+            counter: '00',
+            miliseconds: '00'
+        });
+    }
 
     render() {
         console.log(this.props.route.params)
@@ -57,6 +159,16 @@ class WorkoutBeginSolo extends Component {
                     <View style = {styles.logo}>
                         <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/20, color: '#000', fontSize: 16}}>Logo</Text>
                     </View>
+                </View>
+                <View>
+
+              <Text style={{textAlign: "center", color: '#fff', fontSize: 18}}> {this.state.counter} : {this.state.miliseconds}</Text>
+              <Text> </Text>
+{/*
+                    <TouchableOpacity onPress={() => {this.onButtonStart()}}><Text>hi</Text></TouchableOpacity>
+                    <Button title="Stop"  onPress={this.onButtonStop}></Button>
+                    <Button title="Clear"  onPress={this.onButtonClear}></Button>
+*/}
                 </View>
                 <Card title={this.state.title} description={this.state.description} repOrInt={this.state.repOrInt} cardnum = {this.state.cardnum} />
                 <TouchableOpacity

@@ -87,7 +87,7 @@ class SavedDeck extends Component {
       <TouchableOpacity onPress =  {() => this.props.navigation.navigate("WorkoutBeginSolo", { is_saved: true, user_id: this.props.route.params.itemId, user_deck_id: item.user_deck_id, cards: this.state.decks })}>
         <DeckCard
         id={item.user_deck_id}
-        title={item.name}
+        title={`Jake, ${this.state.decks[0].difficulty}`}
         />
         </TouchableOpacity>
     )
@@ -137,7 +137,18 @@ class SavedDeck extends Component {
                     numColumns={1} />
                 </View>
                 <View style = {styles.footer}>
-                    <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/28, color: '#fff', fontSize: 20}}>Footer</Text>
+                    <View style={{flexDirection: "row", justifyContent: "space-evenly"}}>
+                    <TouchableOpacity
+                onPress = {() => this.props.navigation.navigate("NewDeck")}
+                style={styles.authButton}>
+                    <Text style={styles.loginButtonText}>NEW WORKOUT</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                onPress = {() => this.props.navigation.navigate("Profile")}
+                style={styles.authButton}>
+                    <Text style={styles.loginButtonText}>PROFILE</Text>
+                </TouchableOpacity>
+                    </View>
                 </View>
                 <View>
 

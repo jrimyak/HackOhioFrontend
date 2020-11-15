@@ -53,7 +53,18 @@ class Profile extends Component {
                 </View>
                 <View style={{backgroundColor: '#023436', width: windowWidth, height: windowHeight/8,
                     flex:0.1}}>
-                    <Text style={{textAlign: 'left', color: "#fff"}}>Nav bar</Text>
+<View style={{flexDirection: "row", justifyContent: "space-evenly"}}>
+                    <TouchableOpacity
+                onPress = {() => this.props.navigation.navigate("NewDeck")}
+                style={styles.authButton}>
+                    <Text style={styles.loginButtonText}>NEW WORKOUT</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                onPress = {() => this.props.navigation.navigate("Leaderboard")}
+                style={styles.authButton}>
+                    <Text style={styles.loginButtonText}>LEADERBOARD</Text>
+                </TouchableOpacity>
+                    </View>
                 </View>
             </View>
         )

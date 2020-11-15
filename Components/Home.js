@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Dimensions, Linking, ActivityIndicator, StyleSheet, Text, View, TextInput, TouchableWithoutFeedback, Keyboard, Button, Image, Alert, TouchableOpacity, KeyboardAvoidingView, Picker, AsyncStorage} from 'react-native';
+import DarkLogo from '../Assets/darkgreen01.png'
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
@@ -8,7 +9,7 @@ class Home extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            photoVisible: false
+            photoVisible: true
         }
     }
 
@@ -18,13 +19,15 @@ class Home extends Component {
                 <View style={styles.container}>
                     <View
                         style={styles.logoContainer}>
-                        {
-                            this.state.photoVisible && <Image source="" alt="" style={styles.logo}></Image>                        }
+
+                        <Image source={DarkLogo} alt="" style={{width: 325, height: 325}}></Image>
                     </View>
-                    <Text style={{textAlign: "center", fontSize: 24}}>Home</Text>
+                    <View style={{marginTop: 0}}>
+
                     <Text />
-                    <View style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
-                        <TouchableOpacity 
+                    <View style={{marginBt: 100,display: "flex", alignItems: "center", justifyContent: "space-between"}}>
+
+                        <TouchableOpacity
                         onPress =  {() => this.props.navigation.navigate("Login")}
                         style={styles.authButton}
                         >
@@ -33,11 +36,12 @@ class Home extends Component {
                     </View>
                     <Text />
                     <View style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
-                        <TouchableOpacity 
+                        <TouchableOpacity
                         onPress = {() => this.props.navigation.navigate("Signup")}
                         style={styles.authButton}>
                             <Text style={styles.loginButtonText}>Create an Account</Text>
                         </TouchableOpacity>
+                    </View>
                     </View>
                 </View>
             </View>
@@ -53,10 +57,10 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: windowHeight/2
+        marginBottom: (1.5*windowHeight)/3
       },
     logoContainer: {
-        marginTop: 50,
+        marginTop: 100,
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
@@ -81,7 +85,7 @@ const styles = StyleSheet.create({
         display: "flex",
         borderWidth: 1,
         borderColor: "#5891E5",
-        padding: 10, 
+        padding: 10,
         borderRadius: 50,
         color: "#000",
         backgroundColor: "#fff",
@@ -90,4 +94,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default Home 
+export default Home

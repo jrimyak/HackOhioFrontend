@@ -5,7 +5,7 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 import axios from 'axios'
 import { NavigationActions } from 'react-navigation';
-
+import DarkLogo from '../Assets/darkgreen01.png'
 userId = 0
 class Signup extends Component {
     constructor(props) {
@@ -82,14 +82,13 @@ class Signup extends Component {
                     <View style={styles.container}>
                         <KeyboardAvoidingView
                         behavior="padding"
-                        style={{marginBottom: windowHeight/48}}
+                        style={{marginBottom: windowHeight/8}}
                         keyboardVerticalOffset={100}>
-                           {/*  <View
-                            style={styles.logoContainer}>
-                                {
-                                    this.state.photoVisible && <Image source="" alt="" style={styles.logo}></Image>
-                                }
-                            </View> */}
+                                              <View
+                        style={styles.logoContainer}>
+
+                        <Image source={DarkLogo} alt="" style={{width: 325, height: 325}}></Image>
+                    </View>
                             <Text style={{textAlign: "center", fontSize: 24}}>Create an Account</Text>
                             <ActivityIndicator
                             size="large"

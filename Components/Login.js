@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Dimensions, Linking, ActivityIndicator, StyleSheet, Text, View, TextInput, TouchableWithoutFeedback, Keyboard, Button, Image, Alert, TouchableOpacity, KeyboardAvoidingView, Picker, AsyncStorage} from 'react-native';
-
+import DarkLogo from '../Assets/darkgreen01.png'
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
@@ -11,7 +11,8 @@ class Login extends Component {
             email: "",
             password: "",
             indicating: false,
-            photoVisible: false
+            photoVisible: false,
+            itemId: 1
         };
     }
 
@@ -19,16 +20,16 @@ class Login extends Component {
         this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
         this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
       }
-    
+
       componentWillUnmount() {
         this.keyboardDidShowListener.remove();
         this.keyboardDidHideListener.remove();
       }
-    
+
       _keyboardDidShow = () => {
         this.setState({photoVisible: false})
       }
-    
+
       _keyboardDidHide = () => {
         this.setState({photoVisible: true})
       }
@@ -36,8 +37,8 @@ class Login extends Component {
     render() {
         return (
             <View style = {{flex: 1, backgroundColor: '#9ff4c4'}}>
-                <TouchableWithoutFeedback 
-                onPress={Keyboard.dismiss} 
+                <TouchableWithoutFeedback
+                onPress={Keyboard.dismiss}
                 accessible={false}
                 style = {{flexDirection:"row"}}>
                     <View style={styles.container}>
@@ -45,18 +46,17 @@ class Login extends Component {
                         behavior="padding"
                         style={{marginBottom: (4.05*windowHeight)/10}}
                         keyboardVerticalOffset={100}>
-                            <View
-                            style={styles.logoContainer}>
-                                {
-                                    this.state.photoVisible && <Image source="" alt="" style={styles.logo}></Image>
-                                }
-                            </View>
+                                                <View
+                        style={styles.logoContainer}>
+
+                        <Image source={DarkLogo} alt="" style={{width: 325, height: 325}}></Image>
+                    </View>
                             <Text style={{textAlign: "center", fontSize: 24}}>Sign In</Text>
                             <ActivityIndicator
                             size="large"
                             color="#fff"
                             animating={this.state.indicating} />
-                            <TextInput 
+                            <TextInput
                             placeholder="Enter your email"
                             style={styles.textfield}
                             onChangeText={(text) => this.setState({email: text})}
@@ -69,8 +69,8 @@ class Login extends Component {
                             onChangeText={(text) => this.setState({password: text})}
                             placeholderTextColor="#A8A8A8" />
                             <View style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
-                                <TouchableOpacity 
-                                onPress = {() => this.props.navigation.navigate("WorkoutEndsSolo")}
+                                <TouchableOpacity
+                                onPress = {() => this.props.navigation.navigate("SavedDeck", { itemId: this.state.itemId })}
                                 style={styles.authButton}
                                 >
                                     <Text style={styles.loginButtonText}>START</Text>
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
         display: "flex",
         borderWidth: 1,
         borderColor: "#5891E5",
-        padding: 10, 
+        padding: 10,
         borderRadius: 50,
         color: "#000",
         backgroundColor: "#fff",
