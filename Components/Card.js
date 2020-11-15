@@ -5,32 +5,31 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 import axios from 'axios'
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
-import Card from './Card'
-
-class WorkoutBeginSolo extends Component {
-
+class Card extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            title: 'title',
-            description: 'lorem ipsum i dont know what to put here but yolo dude',
-            repOrInt: '2 mins'
+            description: '',
+            reps: ''
         }
     }
 
     render() {
-        return (
-            <View style={{flex: 1, backgroundColor: '#023436'}}>
-                <View style={{flex: 1, alignItems: "center"}}>
-                    <View style = {styles.logo}>
-                        <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/20, color: '#000', fontSize: 16}}>Logo</Text>
+        return ( 
+            <View style={{flex: 1}}>
+                    <Text style={{textAlign: "left", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>Card 1/12</Text>
+                    <View style={{flex: 1, alignItems: "center"}}>
+                        <View style = {styles.task}>
+                            <Text style={{textAlign: 'center', marginTop: windowHeight/20, color: '#000', fontSize: 24}}>{this.props.title}</Text>
+                            <Text style={{textAlign: 'center', marginTop: windowHeight/20, color: '#000', fontSize: 18}}>{this.props.description}</Text>
+                            <Text style={{textAlign: 'center', marginTop: windowHeight/20, color: '#000', fontSize: 18}}>{this.props.repOrInt}</Text>
+                        </View>
                     </View>
                 </View>
-                <Card title={this.state.title} description={this.state.description} repOrInt={this.state.repOrInt} />
-            </View>
         )
     }
 }
+
 
 
 const styles = StyleSheet.create({
@@ -103,11 +102,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff', 
         width: windowWidth -50, 
         height: windowHeight/3,
-
+        borderRadius: 50,
             alignItems: "center",
-            justifyContent: "center"
+            //justifyContent: "center"
         
     }
 });
 
-export default WorkoutBeginSolo
+export default Card

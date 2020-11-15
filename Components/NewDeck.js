@@ -24,18 +24,21 @@ class NewDeck extends Component {
                     <View>
                         <Text style={{textAlign: 'center', fontSize: 20}}>Generate New Deck</Text>
                         <Text style={{textAlign: 'center', fontSize: 14}}>Answer the following questions to generate a new deck</Text>
-                        <View style={{marginTop: (.8*windowHeight)/4, flexDirection: "column", alignItems: "center"}}>
+                        <View style={{marginTop: (.6*windowHeight)/4, flexDirection: "column", alignItems: "center"}}>
                             <Text style={{textAlign: "center", fontSize: 14}}>Select a difficulty</Text>
+                            <Text></Text>
+                            <Text></Text>
+                            <Text></Text>
                             <Picker
                             selectedValue={this.state.diff}
-                            style={{marginTop: -75, height:75, width:125}}
+                            style={{marginTop: -70, height:75, width:125}}
                             onValueChange={(itemValue, itemIndex) =>
                             this.setState({diff: itemValue})}>
                                 <Picker.Item label="Easy" value={1}></Picker.Item>
                                 <Picker.Item label="Medium" value={2}></Picker.Item>
                                 <Picker.Item label="Hard" value={3}></Picker.Item>
                             </Picker>
-                            <TouchableOpacity style={styles.authButton} >
+                            <TouchableOpacity style={styles.authButton} onPress={() => this.props.navigation.navigate("WorkoutBeginSolo")}>
                                 <Text style={styles.loginButtonText}>START</Text>
                             </TouchableOpacity>
                         </View>

@@ -90,7 +90,7 @@ class SavedDeck extends Component {
         super(props)
         this.state = {
             newDeck: false,
-            username: "Jake"
+            username: "Kriti"
         }
     }
 
