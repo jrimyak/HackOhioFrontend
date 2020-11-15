@@ -43,7 +43,7 @@ class Login extends Component {
                     <View style={styles.container}>
                         <KeyboardAvoidingView
                         behavior="padding"
-                        style={{marginBottom: windowHeight/2}}
+                        style={{marginBottom: (4.05*windowHeight)/10}}
                         keyboardVerticalOffset={100}>
                             <View
                             style={styles.logoContainer}>
@@ -51,7 +51,7 @@ class Login extends Component {
                                     this.state.photoVisible && <Image source="" alt="" style={styles.logo}></Image>
                                 }
                             </View>
-                            <Text style={{textAlign: "center"}}>Sign In</Text>
+                            <Text style={{textAlign: "center", fontSize: 24}}>Sign In</Text>
                             <ActivityIndicator
                             size="large"
                             color="#fff"
@@ -73,7 +73,7 @@ class Login extends Component {
                                 onPress = {() => this.props.navigation.navigate("WorkoutEndsSolo")}
                                 style={styles.authButton}
                                 >
-                                    <Text style={styles.loginButtonText}>Start</Text>
+                                    <Text style={styles.loginButtonText}>START</Text>
                                 </TouchableOpacity>
                             </View>
                         </KeyboardAvoidingView>
@@ -101,19 +101,19 @@ const styles = StyleSheet.create({
         //zIndex: -1
     },
     loginButtonText: {
-        color: "#A8A8A8",
+        color: "#fff",
         textAlign: "center",
         fontWeight: "500",
         fontSize: 16,
         padding: 5
     },
     authButton: {
-        marginTop: 10,
+        marginTop: 30,
         padding: 5,
         borderRadius: 5,
-        color: "#A8A8A8",
+        color: "#fff",
         backgroundColor: "#1E1E1E",
-        width: 150
+        width: 100
     },
     textfield: {
         display: "flex",

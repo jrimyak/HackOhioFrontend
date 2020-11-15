@@ -21,14 +21,14 @@ class Home extends Component {
                         {
                             this.state.photoVisible && <Image source="" alt="" style={styles.logo}></Image>                        }
                     </View>
-                    <Text style={{textAlign: "center"}}>Home</Text>
+                    <Text style={{textAlign: "center", fontSize: 24}}>Home</Text>
                     <Text />
                     <View style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
                         <TouchableOpacity 
                         onPress =  {() => this.props.navigation.navigate("Login")}
                         style={styles.authButton}
                         >
-                            <Text style={styles.loginButtonText}>Log-in</Text>
+                            <Text style={styles.loginButtonText}>Login</Text>
                         </TouchableOpacity>
                     </View>
                     <Text />
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
         //zIndex: -1
     },
     loginButtonText: {
-        color: "#A8A8A8",
+        color: "#fff",
         textAlign: "center",
         fontWeight: "500",
         fontSize: 16,

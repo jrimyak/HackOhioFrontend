@@ -17,7 +17,7 @@ class Header extends Component {
     render() {
         return (
             <View style = {styles.footer}>
-                <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/20, color: '#fff', fontSize: 20}}>Header</Text>
+                <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/20, color: '#9ff4c4', fontSize: 24}}>{this.props.name} {this.props.username}{this.props.punc}</Text>
             </View>
         )
     }

@@ -90,24 +90,25 @@ class SavedDeck extends Component {
         super(props)
         this.state = {
             newDeck: false,
+            username: "Jake"
         }
     }
 
 
     render() {
         return (
-            <View style = {{flex: 1, backgroundColor: '#9ff4c4'}}>
+            <View style = {{flex: 1, backgroundColor: '#7db8ba'}}>
                 <View style={{flex: 0.9}}>
                     <FlatList
                     data={this.data}
                     renderItem={this.renderItem}
-                    ListHeaderComponent={Header}
+                    ListHeaderComponent={() => <Header name="Let's Workout," username={this.state.username} punc="!" />}
                     stickyHeaderIndices={[0]}
                     keyExtractor={this._keyExtractor}
-                    numColumns={2} />
+                    numColumns={1} />
                 </View>
                 <View style = {styles.footer}>
-                    <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/20, color: '#fff', fontSize: 20}}>Footer</Text>
+                    <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/28, color: '#fff', fontSize: 20}}>Footer</Text>
                 </View>
             </View>
         )
@@ -162,12 +163,12 @@ const styles = StyleSheet.create({
         height: windowHeight/8
     },
     item: {
-        backgroundColor: "#add8e6",
+        backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "center",
         flex: 1, 
         margin: 5, 
-        height: 100,
+        height: 150,
         borderBottomWidth: 1,
         alignItems: 'center',
         justifyContent: 'center'

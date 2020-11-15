@@ -22,7 +22,7 @@ class WorkoutEndsSolo extends Component {
                     <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/20, color: '#000', fontSize: 16}}>Logo</Text>
                 </View>
             </View>
-            <View style={{flex: 1, alignItems: "center"}}>
+            <View style={{flex: 1, alignItems: "center", marginTop: -100}}>
                 <Text style={{textAlign: "center", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>FINISHED</Text>
                 <Text style={{textAlign: "center", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>YOU'VE COMPLETED THIS DECK IN</Text>
                 <Text style={{textAlign: "center", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>xx:xx</Text>
@@ -30,7 +30,7 @@ class WorkoutEndsSolo extends Component {
                 <TouchableOpacity 
                 onPress = {() => this.props.navigation.navigate("WorkoutBeginSolo")}
                 style={styles.authButton}>
-                    <Text style={styles.loginButtonText}>Close</Text>
+                    <Text style={styles.loginButtonText}>CLOSE</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         //zIndex: -1
     },
     loginButtonText: {
-        color: "#A8A8A8",
+        color: "#023436",
         textAlign: "center",
         fontWeight: "500",
         fontSize: 16,
@@ -67,8 +67,8 @@ const styles = StyleSheet.create({
         padding: 5,
         borderRadius: 5,
         color: "#A8A8A8",
-        backgroundColor: "#1E1E1E",
-        width: 150,
+        backgroundColor: "#FFF",
+        width: 100,
         marginTop: windowHeight/8
     },
     textfield: {
@@ -111,9 +111,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff', 
         width: windowWidth -50, 
         height: windowHeight/3,
-
-            alignItems: "center",
-            justifyContent: "center"
+        alignItems: "center",
+        justifyContent: "center"
         
     }
 });

@@ -80,7 +80,7 @@ class Signup extends Component {
                     <View style={styles.container}>
                         <KeyboardAvoidingView
                         behavior="padding"
-                        style={{marginBottom: windowHeight/3}}
+                        style={{marginBottom: windowHeight/48}}
                         keyboardVerticalOffset={100}>
                            {/*  <View
                             style={styles.logoContainer}>
@@ -88,7 +88,7 @@ class Signup extends Component {
                                     this.state.photoVisible && <Image source="" alt="" style={styles.logo}></Image>
                                 }
                             </View> */}
-                            <Text style={{textAlign: "center"}}>Create an Account</Text>
+                            <Text style={{textAlign: "center", fontSize: 24}}>Create an Account</Text>
                             <ActivityIndicator
                             size="large"
                             color="#fff"
@@ -131,9 +131,6 @@ class Signup extends Component {
                             onChangeText={(text) => this.setState({passwordConfirmation: text})}
                             placeholderTextColor="#A8A8A8" />
                             <Text />
-                            <TouchableOpacity>
-                                <Text style={{textAlign: "center"}}>Have an account? Login</Text>
-                            </TouchableOpacity>
                             <View style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
                                 <TouchableOpacity 
                                 onPress = {() => {this.submit()
@@ -144,7 +141,7 @@ class Signup extends Component {
                                 } }
                                 style={styles.authButton}
                                 >
-                                    <Text style={styles.loginButtonText}>Start</Text>
+                                    <Text style={styles.loginButtonText}>START</Text>
                                 </TouchableOpacity>
                             </View>
                         </KeyboardAvoidingView>
@@ -172,19 +169,19 @@ const styles = StyleSheet.create({
         //zIndex: -1
     },
     loginButtonText: {
-        color: "#A8A8A8",
+        color: "#fff",
         textAlign: "center",
         fontWeight: "500",
         fontSize: 16,
         padding: 5
     },
     authButton: {
-        marginTop: 10,
+        marginTop: 20,
         padding: 5,
         borderRadius: 5,
         color: "#A8A8A8",
         backgroundColor: "#1E1E1E",
-        width: 150
+        width: 100
     },
     textfield: {
         display: "flex",
