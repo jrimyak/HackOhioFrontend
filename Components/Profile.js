@@ -28,12 +28,11 @@ class Profile extends Component {
                     style={{width: 125, height:125, borderRadius: 100, margin: -69, borderWidth: 2,
                         borderColor: "#9ff4c4"}} >
                 </Image>
-                <Image
-                    source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Number_sign.svg/200px-Number_sign.svg.png'}}   
-                    style={{width: 50, height:50, borderRadius: 100, marginLeft: -60, margin: 30, borderWidth: 2,
-                        borderColor: "#000",}} >
-                </Image>
-                <Text style={{fontSize: 20}}>username</Text>
+                <View style={{width: 50, height: 50, borderRadius: 50, borderWidth: 1, backgroundColor: '#9ff4c4',
+                    borderColor: 'white', borderStyle: 'solid', justifyContent: 'center', marginRight: 100, marginTop: 25}}>
+                    <Text style={{fontSize: 20,textAlign: 'center'}}>20</Text>
+                </View>
+                <Text style={{fontSize: 20, marginTop: 20}}>username</Text>
                 <View style= {{width: windowWidth, height: windowHeight/500, backgroundColor: '#aa8114', margin: 20}}>
                 </View>
                 </View>
