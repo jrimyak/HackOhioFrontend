@@ -6,6 +6,7 @@ const windowHeight = Dimensions.get('window').height;
 import axios from 'axios'
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import Card from './Card'
+import DarkLogo from  '../Assets/mintgreen01.png'
 
 class StopWatch extends React.PureComponent {
 
@@ -48,10 +49,10 @@ class WorkoutBeginSolo extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            title: 'title',
-            description: 'lorem ipsum i dont know what to put here but yolo dude',
-            repOrInt: '2 mins',
-            cardnum: 1,
+            title: 'Press for First Card!',
+            description: '',
+            repOrInt: '',
+            cardnum: 0,
             timer: null,
             counter: '00',
             miliseconds: '00',
@@ -83,15 +84,15 @@ class WorkoutBeginSolo extends Component {
      getOnPress = () => {
          if(this.state.cardnum < 12){
              this.setState({cardnum: (this.state.cardnum+1)});
-             this.setState({title: 'Easy Deck'})
-             this.setState({description: this.props.route.params.cards[0].cards[this.state.cardnum-1]["workout"]})
-             this.setState({repOrInt: this.props.route.params.cards[0].cards[this.state.cardnum-1]["duration"]})
+             this.setState({title: 'Hard Deck'})
+             this.setState({description: this.props.route.params.cards[0].cards[this.state.cardnum]["workout"]})
+             this.setState({repOrInt: this.props.route.params.cards[0].cards[this.state.cardnum]["duration"]})
 
        }
          else{
             this.onButtonStop()
              this.props.navigation.navigate("WorkoutEndsSolo", {count: this.state.counter, milli: this.state.miliseconds});
-
+            this.onButtonClear()
          }
       }
 
@@ -154,15 +155,15 @@ class WorkoutBeginSolo extends Component {
     render() {
         console.log(this.props.route.params)
         return (
-            <View style={{flex: 1, backgroundColor: '#023436'}}>
+            <View style={{flex: 1, backgroundColor: '#9ff4c4'}}>
                 <View style={{flex: 1, alignItems: "center"}}>
                     <View style = {styles.logo}>
-                        <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/20, color: '#000', fontSize: 16}}>Logo</Text>
+                        <Image source={DarkLogo} alt="" style={{width: 325, height: 325}}></Image>
                     </View>
                 </View>
-                <View>
+            <View>
 
-              <Text style={{textAlign: "center", color: '#fff', fontSize: 18}}> {this.state.counter} : {this.state.miliseconds}</Text>
+              <Text style={{textAlign: "center", color: '#000', fontSize: 18}}> {this.state.counter} : {this.state.miliseconds}</Text>
               <Text> </Text>
 {/*
                     <TouchableOpacity onPress={() => {this.onButtonStart()}}><Text>hi</Text></TouchableOpacity>
@@ -241,7 +242,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     logo: {
-        backgroundColor: '#fff',
+        //backgroundColor: '#fff',
         width: windowWidth -50,
         height: windowHeight/8,
         //marginBottom: (7/8) * (windowHeight),

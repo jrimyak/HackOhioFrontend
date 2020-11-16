@@ -15,11 +15,11 @@ class Profile extends Component {
             firstName: 'Jake',
             lastName: 'Imyak',
             username: 'jrimyak',
-            score: 0,
+            score: 95,
             easyDecks: 0,
-            medDecks: 1,
-            hardDecks: 0,
-            favoriteDeck: 'Deck 1'
+            medDecks: 0,
+            hardDecks: 1,
+            favoriteDeck: 'Jake, Hard'
         }
     }
 
@@ -38,7 +38,7 @@ class Profile extends Component {
                 </Image>
                 <View style={{width: 50, height: 50, borderRadius: 50, borderWidth: 1, backgroundColor: '#9ff4c4',
                     borderColor: 'white', borderStyle: 'solid', justifyContent: 'center', marginRight: 100, marginTop: 25}}>
-                    <Text style={{fontSize: 20,textAlign: 'center'}}>20</Text>
+                    <Text style={{fontSize: 20,textAlign: 'center'}}>25</Text>
                 </View>
                 <Text style={{fontSize: 20, marginTop: 20}}>{this.state.username}</Text>
                 <View style= {{width: windowWidth, height: windowHeight/500, backgroundColor: '#aa8114', margin: 20}}>

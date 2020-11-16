@@ -4,6 +4,7 @@ import {Dimensions, Linking, ActivityIndicator, StyleSheet, Text, View, TextInpu
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 import axios from 'axios'
+import DarkLogo from '../Assets/darkgreen01.png'
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 
 class WorkoutEndsSolo extends Component {
@@ -16,19 +17,19 @@ class WorkoutEndsSolo extends Component {
 
     render() {
         return (
-            <View style={{flex: 1, backgroundColor: '#023436'}}>
+            <View style={{flex: 1, backgroundColor: '#9ff4c4'}}>
             <View style={{flex: 1, alignItems: "center"}}>
                 <View style = {styles.logo}>
-                    <Text style={{flex: 1, textAlign: 'center', marginTop: windowHeight/20, color: '#000', fontSize: 16}}>Logo</Text>
+                    <Image source={DarkLogo} alt="" style={{width: 325, height: 325}}></Image>
                 </View>
             </View>
             <View style={{flex: 1, alignItems: "center", marginTop: -100}}>
-                <Text style={{textAlign: "center", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>FINISHED</Text>
-                <Text style={{textAlign: "center", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>YOU'VE COMPLETED THIS DECK IN</Text>
-                <Text style={{textAlign: "center", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>{this.props.route.params.count} s:{this.props.route.params.milli} ms</Text>
-                <Text style={{textAlign: "center", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>YOU'VE EARNED x POINTS</Text>
+                <Text style={{textAlign: "center", marginLeft: 25,marginBottom: 5, color: '#000', fontSize: 20}}>FINISHED</Text>
+                <Text style={{textAlign: "center", marginLeft: 25,marginBottom: 5, color: '#000', fontSize: 20}}>YOU'VE COMPLETED THIS DECK IN</Text>
+                <Text style={{textAlign: "center", marginLeft: 25,marginBottom: 5, color: '#000', fontSize: 20}}>{this.props.route.params.count} s:{this.props.route.params.milli} ms</Text>
+                <Text style={{textAlign: "center", marginLeft: 25,marginBottom: 5, color: '#000', fontSize: 20}}>YOU'VE EARNED 95 POINTS</Text>
                 <TouchableOpacity
-                onPress = {() => this.props.navigation.navigate("WorkoutBeginSolo")}
+                onPress = {() => this.props.navigation.navigate("Profile")}
                 style={styles.authButton}>
                     <Text style={styles.loginButtonText}>CLOSE</Text>
                 </TouchableOpacity>
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     logo: {
-        backgroundColor: '#fff',
+        // backgroundColor: '#fff',
         width: windowWidth -50,
         height: windowHeight/8,
         //marginBottom: (7/8) * (windowHeight),

@@ -17,12 +17,12 @@ class Card extends Component {
     render() {
         return (
             <View style={{flex: 1}}>
-                    <Text style={{textAlign: "left", marginLeft: 25,marginBottom: 5, color: '#fff', fontSize: 20}}>Card {this.props.cardnum}/12</Text>
+                    <Text style={{textAlign: "left", marginLeft: 25,marginBottom: 5, color: '#000', fontSize: 20}}>Card {this.props.cardnum}/12</Text>
                     <View style={{flex: 1, alignItems: "center"}}>
                         <View style = {styles.task}>
                             <Text style={{textAlign: 'center', marginTop: windowHeight/20, color: '#000', fontSize: 24}}>{this.props.title}</Text>
                             <Text style={{textAlign: 'center', marginTop: windowHeight/20, color: '#000', fontSize: 18}}>{this.props.description}</Text>
-                            <Text style={{textAlign: 'center', marginTop: windowHeight/20, color: '#000', fontSize: 18}}>{this.props.repOrInt}</Text>
+                            <Text style={{textAlign: 'center', marginTop: windowHeight/20, color: '#000', fontSize: 18}}>{this.props.repOrInt} Reps</Text>
                         </View>
                     </View>
                 </View>

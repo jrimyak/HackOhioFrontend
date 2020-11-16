@@ -6,6 +6,21 @@ const windowHeight = Dimensions.get('window').height;
 import axios from 'axios'
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import Header from './Header';
+import Juno from '../Assets/Juno.jpg';
+import Brutus from '../Assets/BrutusCart.jpg';
+import Jake from '../Assets/jakeCartoon.jpg';
+import MichaelD from '../Assets/MichaelD.jpg';
+import Uno from '../Assets/UnoCart.jpg';
+import Urban from '../Assets/UrbanCart.jpg';
+import Painter from '../Assets/PainterCart.jpg';
+import Cris from '../Assets/CrisCart.jpg';
+import Fields from '../Assets/Fields.jpg';
+import Kriti from '../Assets/KritiCart.jpg';
+import Jacob from '../Assets/rosenCart.jpg';
+import Josh from '../Assets/JoshCart.jpg';
+import Shing from '../Assets/ShingCart.jpg';
+
+
 
 class LeaderboardPosition extends React.PureComponent {
     render() {
@@ -13,7 +28,7 @@ class LeaderboardPosition extends React.PureComponent {
             <View style={styles.item}>
                 <View style={{flex: 1,flexDirection:"row", marginLeft: 10}}>
                 <Image style = {{alignItems: "flex-start"}}
-                    source={{ uri: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg'}}
+                    source={this.props.src}
                     style={{width: 50, height: 50, borderRadius: 50/ 2}} >
                 </Image>
                 <Text style = {{marginTop: 15, marginLeft: 20, fontSize: 18}}>
@@ -36,67 +51,80 @@ class Leaderboard extends Component {
         {
             "rank":1,
             "name":"Jacob R",
-            "score":100
+            "score":100,
+            "src": Jacob
         },
         {
             "rank":2,
             "name":"Jake I",
-            "score":99
+            "score":95,
+            "src": Jake
         },
         {
             "rank":3,
             "name":"Josh I",
-            "score":95
+            "score":95,
+            "src": Josh
         },
         {
             "rank":4,
             "name":"Kriti C",
-            "score":94
+            "score":94,
+            "src": Kriti
         },
         {
             "rank":5,
             "name":"Justin F",
-            "score":90
+            "score":90,
+            "src": Fields
         },
         {
             "rank":6,
             "name":"Uno F",
-            "score":88
+            "score":88,
+            "src": Uno
         },
         {
             "rank":7,
             "name":"Juno O",
-            "score":85
+            "score":85,
+            "src": Juno
         },
         {
             "rank":8,
-            "name":"Danny S",
-            "score":80
+            "name":"Shing L",
+            "score":80,
+            "src": Shing
         },
         {
             "rank":9,
             "name":"Brutus B",
-            "score":70
+            "score":70,
+            "src": Brutus
         },
         {
             "rank":10,
             "name":"Urban M",
-            "score":55
+            "score":55,
+            "src": Urban
           },
           {
             "rank":11,
             "name":"Michael D",
-            "score":30
+            "score":30,
+            "src": MichaelD
           },
           {
             "rank":12,
             "name":"Christina J",
-            "score":20
+            "score":20,
+            "src": Cris
           },
           {
             "rank":13,
             "name":"Nickalaus P",
-            "score":15
+            "score":15,
+            "src": Painter
             },
 
       ]
@@ -108,6 +136,7 @@ class Leaderboard extends Component {
         rank={item.rank}
         name={item.name}
         score={item.score}
+        src={item.src}
         />
     )
 

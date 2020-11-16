@@ -98,7 +98,7 @@ class SavedDeck extends Component {
 
         this.state = {
             newDeck: false,
-            username: "Kriti",
+            username: "Jake",
             id: '',
             decks: [],
         }
@@ -126,7 +126,7 @@ class SavedDeck extends Component {
        // console.log(itemId)
        console.log(this.props)
         return (
-            <View style = {{flex: 1, backgroundColor: '#7db8ba'}}>
+            <View style = {{flex: 1, backgroundColor: '#9ff4c4'}}>
                 <View style={{flex: 0.9}}>
                     <FlatList
                     data={this.state.decks}
